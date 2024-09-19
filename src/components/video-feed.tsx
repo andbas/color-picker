@@ -35,7 +35,9 @@ function VideoFeed() {
 
   const processFrame = () => {
     if (canvasRef.current && videoRef.current) {
-      const context = canvasRef.current.getContext("2d");
+      const context = canvasRef.current.getContext("2d", {
+        willReadFrequently: true,
+      });
       if (context) {
         context.drawImage(
           videoRef.current,
@@ -80,13 +82,13 @@ function VideoFeed() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-4">
+    <div className="flex flex-col items-center mt-6">
       <div className="relative w-80 h-80">
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover bg-gray-700"
+          className="absolute top-0 left-0 w-full h-full object-cover bg-background rounded-md"
           onClick={handleVideoClick}
         ></video>
         <div
