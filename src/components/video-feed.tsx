@@ -74,15 +74,6 @@ function VideoFeed() {
     }
   };
 
-  const invertColor = (color: string): string => {
-    const rgb = color.match(/\d+/g);
-    if (rgb) {
-      const inverted = rgb.map((c) => 255 - parseInt(c)).join(", ");
-      return `rgb(${inverted})`;
-    }
-    return color;
-  };
-
   return (
     <div className="flex flex-col items-center mt-6">
       <div className="relative w-80 h-80">
