@@ -70,6 +70,15 @@ function VideoFeed() {
     }
   };
 
+  const invertColor = (color: string): string => {
+    const rgb = color.match(/\d+/g);
+    if (rgb) {
+      const inverted = rgb.map((c) => 255 - parseInt(c)).join(", ");
+      return `rgb(${inverted})`;
+    }
+    return color;
+  };
+
   return (
     <div className="flex flex-col items-center mt-4">
       <div className="relative w-80 h-80">
@@ -80,6 +89,15 @@ function VideoFeed() {
           className="absolute top-0 left-0 w-full h-full object-cover bg-gray-700"
           onClick={handleVideoClick}
         ></video>
+        <div
+          className="absolute h-[1px] w-[1px]"
+          style={{
+            top: `${coordinates.y}px`,
+            left: `${coordinates.x}px`,
+            backgroundColor: invertColor(pixelColor),
+            mixBlendMode: "difference",
+          }}
+        ></div>
       </div>
       <Button onClick={toggleCamera} variant="outline" className="mt-4">
         <SwitchCamera />
