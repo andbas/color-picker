@@ -1,18 +1,20 @@
-import VideoFeed from "./components/VideoFeed";
+import VideoFeed from "./components/video-feed";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import { ThemeProvider } from "./components/theme-provider";
+import { ModeToggle } from "./components/mode-toggle";
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div>
-        <h1 className="text-2xl font-bold mb-4">Pixel Color Detector</h1>
-        <VideoFeed />
-        <Button variant="outline" className="mt-4">
-          Enabled
-        </Button>
+    <ThemeProvider defaultTheme="system" storageKey="ui-theme">
+      <div className="min-h-screen justify-center bg-background">
+        <div>
+          <VideoFeed />
+        </div>
+        <div className="flex flex-col items-center mt-4">
+          <ModeToggle />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
