@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, MouseEvent } from "react";
 import { Button } from "./ui/button";
-import { SwitchCamera } from "lucide-react";
-import { closest } from "color-2-name";
+import { Crosshair, SwitchCamera } from "lucide-react";
+import { closest, isLight } from "color-2-name";
 
 function VideoFeed() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -93,15 +93,15 @@ function VideoFeed() {
           className="absolute top-0 left-0 w-full h-full object-cover bg-background rounded-md"
           onClick={handleVideoClick}
         ></video>
-        <div
-          className="absolute h-[1px] w-[1px]"
+
+        <Crosshair
+          className="absolute h-5 w-5 top-40 left-40"
           style={{
-            top: `${coordinates.y}px`,
-            left: `${coordinates.x}px`,
-            backgroundColor: invertColor(pixelColor),
-            mixBlendMode: "difference",
+            top: `${coordinates.y - 10}px`,
+            left: `${coordinates.x - 10}px`,
+            color: isLight(pixelColor) ? "#000" : "#fff",
           }}
-        ></div>
+        />
       </div>
       <Button onClick={toggleCamera} variant="outline" className="mt-4">
         <SwitchCamera />
@@ -120,7 +120,7 @@ function VideoFeed() {
         <p className="mt-2">
           Pixel Coordinates: ({coordinates.x}, {coordinates.y})
         </p>
-        <p className="mt-2">Pixel Color: {pixelColor}</p>
+        {/* <p className="mt-2">Pixel Color: {pixelColor}</p> */}
         <p className="mt-2">Closest: {`${closest(pixelColor).name}`}</p>
       </div>
     </div>
