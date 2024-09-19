@@ -10,7 +10,9 @@ function VideoFeed() {
     x: 160,
     y: 160,
   });
-  const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment"
+  );
 
   const startCamera = () => {
     navigator.mediaDevices
