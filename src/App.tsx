@@ -1,5 +1,6 @@
 import VideoFeed from "./components/VideoFeed";
 import "./App.css";
+import { Button } from "./components/ui/button";
 
 function App() {
   return (
@@ -7,6 +8,9 @@ function App() {
       <div>
         <h1 className="text-2xl font-bold mb-4">Pixel Color Detector</h1>
         <VideoFeed />
+        <Button variant="outline" className="mt-4">
+          Enabled
+        </Button>
       </div>
     </div>
   );
