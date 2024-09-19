@@ -1,102 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Pixel Color Detector</title>
-    <style>
-      #videoElement {
-        width: 320px;
-        height: 240px;
-        background-color: #666;
-      }
-      #colorDisplay {
-        width: 100px;
-        height: 100px;
-        border: 1px solid #000;
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 20px;
-      }
-      #coordinates {
-        margin-top: 10px;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/pipette.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera Color Picker</title>
   </head>
   <body>
-    <h1>Pixel Color Detector</h1>
-    <video id="videoElement" autoplay playsinline></video>
-    <div id="colorDisplay"></div>
-    <div id="coordinates">
-      Pixel Coordinates: (<span id="xCoord">160</span>,
-      <span id="yCoord">120</span>)
-    </div>
-
-    <!-- Hidden canvas -->
-    <canvas
-      id="canvasElement"
-      width="320"
-      height="240"
-      style="display: none"
-    ></canvas>
-
-    <script>
-      const videoElement = document.getElementById("videoElement");
-      const canvas = document.getElementById("canvasElement");
-      const context = canvas.getContext("2d");
-      const colorDisplay = document.getElementById("colorDisplay");
-      const xCoordElement = document.getElementById("xCoord");
-      const yCoordElement = document.getElementById("yCoord");
-
-      // Pixel coordinates (center of the video)
-      let x = 160;
-      let y = 120;
-
-      // Access the camera
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then(function (stream) {
-          videoElement.srcObject = stream;
-          videoElement.onloadedmetadata = function (e) {
-            videoElement.play();
-            processFrame(); // Start processing frames once the video is playing
-          };
-        })
-        .catch(function (error) {
-          console.error("Error accessing the camera: ", error);
-          alert(
-            "Unable to access the camera. Please ensure the site has permission to use the camera."
-          );
-        });
-
-      function processFrame() {
-        // Draw the current frame from the video onto the canvas
-        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-        // Get the pixel data at the specified position (x, y)
-        const pixelData = context.getImageData(x, y, 1, 1).data;
-
-        // Extract RGB values
-        const red = pixelData[0];
-        const green = pixelData[1];
-        const blue = pixelData[2];
-
-        // Update the color display
-        const rgbColor = `rgb(${red}, ${green}, ${blue})`;
-        colorDisplay.style.backgroundColor = rgbColor;
-
-        // Continue processing the next frame
-        requestAnimationFrame(processFrame);
-      }
-
-      // Optional: Allow user to click on the video to select a pixel
-      videoElement.addEventListener("click", function (event) {
-        const rect = videoElement.getBoundingClientRect();
-        x = event.clientX - rect.left;
-        y = event.clientY - rect.top;
-
-        // Update the displayed coordinates
-        xCoordElement.textContent = Math.round(x);
-        yCoordElement.textContent = Math.round(y);
-      });
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
