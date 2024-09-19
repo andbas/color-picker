@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, MouseEvent } from "react";
 import { Button } from "./ui/button";
 import { SwitchCamera } from "lucide-react";
+import { closest } from "color-2-name";
 
 function VideoFeed() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -52,7 +53,8 @@ function VideoFeed() {
           1,
           1
         ).data;
-        const color = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
+        let [r, g, b] = pixelData;
+        const color = `rgb(${r}, ${g}, ${b})`;
         setPixelColor(color);
       }
     }
@@ -119,6 +121,7 @@ function VideoFeed() {
           Pixel Coordinates: ({coordinates.x}, {coordinates.y})
         </p>
         <p className="mt-2">Pixel Color: {pixelColor}</p>
+        <p className="mt-2">Closest: {`${closest(pixelColor).name}`}</p>
       </div>
     </div>
   );
