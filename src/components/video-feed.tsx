@@ -37,7 +37,7 @@ function VideoFeed() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-6">
+    <div className="flex flex-col items-center">
       <div className="relative w-full aspect-square" onClick={handleClick}>
         <VideoSampler
           facingMode={facingMode}
