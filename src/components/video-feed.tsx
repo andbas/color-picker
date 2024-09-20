@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, MouseEvent } from "react";
 import { Button } from "./ui/button";
-import { Crosshair, SwitchCamera } from "lucide-react";
+import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
 import { closest, isLight } from "color-2-name";
 import { PixelSquareMatrix, PixelMatrixType } from "./pixel-matrix";
 
@@ -16,6 +16,7 @@ function VideoFeed() {
     "environment"
   );
   const [pixelMatrix, setPixelMatrix] = useState<PixelMatrixType>([]);
+  const [isPaused, setIsPaused] = useState(false);
 
   const startCamera = () => {
     navigator.mediaDevices
@@ -26,6 +27,10 @@ function VideoFeed() {
         }
       })
       .catch((err) => console.error("Error accessing the camera:", err));
+  };
+
+  const togglePlay = () => {
+    setIsPaused((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -137,14 +142,24 @@ function VideoFeed() {
           }}
         />
       </div>
-      <Button
-        onClick={toggleCamera}
-        variant="outline"
-        size="icon"
-        className="mt-4"
-      >
-        <SwitchCamera />
-      </Button>
+      <div className="flex mt-4 space-x-2">
+        <Button
+          onClick={toggleCamera}
+          variant="outline"
+          size="icon"
+          className="p-2"
+        >
+          <SwitchCamera />
+        </Button>
+        <Button
+          onClick={togglePlay}
+          variant="outline"
+          size="icon"
+          className="p-2"
+        >
+          {isPaused ? <Play /> : <Pause />}
+        </Button>
+      </div>
 
       {pixelMatrix?.length > 0 && (
         <div className="flex mt-4 space-x-4">
