@@ -30,6 +30,11 @@ function VideoFeed() {
   };
 
   const togglePlay = () => {
+    if (isPaused) {
+      videoRef.current?.play();
+    } else {
+      videoRef.current?.pause();
+    }
     setIsPaused((prevState) => !prevState);
   };
 
