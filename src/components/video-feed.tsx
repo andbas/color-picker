@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, MouseEvent } from "react";
 import { Button } from "./ui/button";
 import { Crosshair, SwitchCamera } from "lucide-react";
 import { closest, isLight } from "color-2-name";
+import { PixelSquareMatrix, PixelMatrixType } from "./pixel-matrix";
 
 function VideoFeed() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -14,6 +15,7 @@ function VideoFeed() {
   const [facingMode, setFacingMode] = useState<"user" | "environment">(
     "environment"
   );
+  const [pixelMatrix, setPixelMatrix] = useState<PixelMatrixType>([]);
 
   const startCamera = () => {
     navigator.mediaDevices
@@ -47,15 +49,29 @@ function VideoFeed() {
           canvasRef.current.width,
           canvasRef.current.height
         );
-        const pixelData = context.getImageData(
-          coordinates.x,
-          coordinates.y,
-          1,
-          1
-        ).data;
-        let [r, g, b] = pixelData;
-        const color = `rgb(${r}, ${g}, ${b})`;
-        setPixelColor(color);
+
+        // Get 7x7 pixel matrix
+        const matrix = [];
+        for (let y = -3; y <= 3; y++) {
+          const row = [];
+          for (let x = -3; x <= 3; x++) {
+            const pixelData = context.getImageData(
+              coordinates.x + x,
+              coordinates.y + y,
+              1,
+              1
+            ).data;
+            row.push({ color: [pixelData[0], pixelData[1], pixelData[2]] });
+          }
+          matrix.push(row);
+        }
+        setPixelMatrix(matrix as PixelMatrixType);
+
+        // Set center pixel color
+        const centerPixel = matrix[3][3].color;
+        setPixelColor(
+          `rgb(${centerPixel[0]}, ${centerPixel[1]}, ${centerPixel[2]})`
+        );
       }
     }
     requestAnimationFrame(processFrame);
@@ -95,7 +111,12 @@ function VideoFeed() {
           }}
         />
       </div>
-      <Button onClick={toggleCamera} variant="outline" className="mt-4">
+      <Button
+        onClick={toggleCamera}
+        variant="outline"
+        size="icon"
+        className="mt-4"
+      >
         <SwitchCamera />
       </Button>
       <canvas
@@ -104,15 +125,21 @@ function VideoFeed() {
         height="320"
         className="hidden"
       ></canvas>
-      <div
-        className="mt-4 w-20 h-20"
-        style={{ backgroundColor: pixelColor }}
-      ></div>
+      <div className="flex mt-4 space-x-4">
+        <PixelSquareMatrix
+          pixels={pixelMatrix}
+          className="w-20 h-20 rounded-md overflow-hidden"
+          highlight={[3, 3]}
+        />
+        <div
+          className="w-20 h-20 rounded-md"
+          style={{ backgroundColor: pixelColor }}
+        ></div>
+      </div>
       <div className="mt-4">
         <p className="mt-2">
           Pixel Coordinates: ({coordinates.x}, {coordinates.y})
         </p>
-        {/* <p className="mt-2">Pixel Color: {pixelColor}</p> */}
         <p className="mt-2">Closest: {`${closest(pixelColor).name}`}</p>
       </div>
     </div>
