@@ -91,6 +91,7 @@ function VideoFeed() {
             top: `${coordinates.y - 10}px`,
             left: `${coordinates.x - 10}px`,
             color: isLight(pixelColor) ? "#000" : "#fff",
+            transition: "color 0.2s ease-in-out",
           }}
         />
       </div>
