@@ -42,12 +42,32 @@ function VideoFeed() {
         willReadFrequently: true,
       });
       if (context) {
+        const video = videoRef.current;
+        const canvas = canvasRef.current;
+
+        // Calculate the scaling factor to fill the canvas
+        const scale = Math.max(
+          canvas.width / video.videoWidth,
+          canvas.height / video.videoHeight
+        );
+
+        // Calculate dimensions of the source rectangle
+        const srcWidth = canvas.width / scale;
+        const srcHeight = canvas.height / scale;
+        const srcX = (video.videoWidth - srcWidth) / 2;
+        const srcY = (video.videoHeight - srcHeight) / 2;
+
+        // Draw the video frame
         context.drawImage(
-          videoRef.current,
+          video,
+          srcX,
+          srcY,
+          srcWidth,
+          srcHeight, // Source rectangle
           0,
           0,
-          canvasRef.current.width,
-          canvasRef.current.height
+          canvas.width,
+          canvas.height // Destination rectangle
         );
 
         // Get 7x7 pixel matrix
@@ -100,6 +120,12 @@ function VideoFeed() {
           className="absolute top-0 left-0 w-full h-full object-cover bg-background rounded-md"
           onClick={handleVideoClick}
         ></video>
+        <canvas
+          ref={canvasRef}
+          width="320"
+          height="320"
+          className="hidden"
+        ></canvas>
 
         <Crosshair
           className="absolute h-5 w-5 top-40 left-40"
@@ -119,23 +145,20 @@ function VideoFeed() {
       >
         <SwitchCamera />
       </Button>
-      <canvas
-        ref={canvasRef}
-        width="320"
-        height="320"
-        className="hidden"
-      ></canvas>
-      <div className="flex mt-4 space-x-4">
-        <PixelSquareMatrix
-          pixels={pixelMatrix}
-          className="w-20 h-20 rounded-md overflow-hidden"
-          highlight={[3, 3]}
-        />
-        <div
-          className="w-20 h-20 rounded-md"
-          style={{ backgroundColor: pixelColor }}
-        ></div>
-      </div>
+
+      {pixelMatrix?.length > 0 && (
+        <div className="flex mt-4 space-x-4">
+          <PixelSquareMatrix
+            pixels={pixelMatrix}
+            className="w-20 h-20 rounded-md overflow-hidden"
+            highlight={[3, 3]}
+          />
+          <div
+            className="w-20 h-20 rounded-md"
+            style={{ backgroundColor: pixelColor }}
+          ></div>
+        </div>
+      )}
       <div className="mt-4">
         <p className="mt-2">
           Pixel Coordinates: ({coordinates.x}, {coordinates.y})
