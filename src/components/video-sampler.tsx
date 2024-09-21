@@ -30,6 +30,26 @@ export function VideoSampler({
       .catch((error) => {
         console.error("Error accessing video stream:", error);
       });
+
+    // Flip the image horizontally if facingMode is user
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const context = canvas.getContext("2d", {
+      colorSpace: "display-p3",
+      willReadFrequently: true,
+    });
+    if (!context) return;
+    if (facingMode === "user") {
+      // I don't have a good explanation for this, but restore() -> save() works
+      context.restore();
+      context.save();
+      context.scale(-1, 1);
+      context.translate(-canvas.width, 0);
+    } else {
+      context.restore();
+      context.save();
+    }
   }, [facingMode]);
 
   useEffect(() => {
