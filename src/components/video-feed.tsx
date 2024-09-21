@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
 import { closest, isLight } from "color-2-name";
@@ -6,6 +6,7 @@ import { PixelSquareMatrix, PixelMatrixType } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
 
 function VideoFeed() {
+  const videoDivRef = useRef<HTMLDivElement>(null);
   const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
     x: Math.floor(window.innerWidth / 2),
     y: Math.floor(window.innerWidth / 2),
@@ -20,6 +21,15 @@ function VideoFeed() {
   const togglePlay = () => {
     setIsPaused((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (!videoDivRef.current) return;
+    console.log(videoDivRef.current.clientWidth);
+    setCoordinates({
+      x: Math.floor(videoDivRef.current.clientWidth / 2),
+      y: Math.floor(videoDivRef.current.clientHeight / 2),
+    });
+  }, [videoDivRef]);
 
   const toggleCamera = () => {
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
@@ -38,7 +48,11 @@ function VideoFeed() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-full aspect-square" onClick={handleClick}>
+      <div
+        ref={videoDivRef}
+        className="relative w-full aspect-square overflow-hidden"
+        onClick={handleClick}
+      >
         <VideoSampler
           facingMode={facingMode}
           coordinates={coordinates}
