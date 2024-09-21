@@ -7,7 +7,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="ui-theme">
       <div className="justify-center bg-background">
-        <div>
+        <div className="max-w-screen-sm mx-auto">
           <VideoFeed />
         </div>
         <div className="flex flex-col items-center mt-4">

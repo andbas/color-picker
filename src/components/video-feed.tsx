@@ -4,6 +4,7 @@ import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
 import { closest, isLight } from "color-2-name";
 import { PixelSquareMatrix, PixelMatrixType } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
+import { Frame } from "./frame";
 
 function VideoFeed() {
   const videoDivRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,6 @@ function VideoFeed() {
 
   useEffect(() => {
     if (!videoDivRef.current) return;
-    console.log(videoDivRef.current.clientWidth);
     setCoordinates({
       x: Math.floor(videoDivRef.current.clientWidth / 2),
       y: Math.floor(videoDivRef.current.clientHeight / 2),
@@ -65,6 +65,7 @@ function VideoFeed() {
           }}
           pause={isPaused}
         />
+        <Frame />
         <Crosshair
           className="absolute h-5 w-5 top-40 left-40"
           style={{
