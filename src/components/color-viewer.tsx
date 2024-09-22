@@ -41,7 +41,7 @@ export function ColorViewer({ pixel }: ColorViewerProps) {
 
         <span
           className={`font-mono transition-opacity duration-200 ${
-            copied ? "opacity-0" : "opacity-100"
+            copied ? "fade-out opacity-0" : "fade-in"
           }`}
         >
           {pixelColor}
