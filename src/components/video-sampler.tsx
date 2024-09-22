@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { PixelMatrixType } from "./pixel-matrix";
+import { PixelMatrixType } from "@/types";
 
 interface VideoSamplerProps {
   facingMode: "user" | "environment";

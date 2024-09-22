@@ -1,8 +1,4 @@
-interface Pixel {
-  color: [R: number, G: number, B: number];
-}
-
-export type PixelMatrixType = Pixel[][];
+import { PixelMatrixType } from "@/types";
 
 interface PixelMatrixProps {
   pixels: PixelMatrixType;

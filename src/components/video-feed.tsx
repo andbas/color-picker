@@ -1,10 +1,13 @@
+import { PixelMatrixType } from "@/types";
+import { pixelToHex, isLight } from "@/utils";
 import { useState, MouseEvent, TouchEvent, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
-import { closest, isLight } from "color-2-name";
-import { PixelSquareMatrix, PixelMatrixType } from "./pixel-matrix";
+import { closest } from "color-2-name";
+import { PixelSquareMatrix } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
+import { ColorViewer } from "./color-viewer";
 
 function VideoFeed() {
   const videoDivRef = useRef<HTMLDivElement>(null);
@@ -35,7 +38,7 @@ function VideoFeed() {
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
   };
 
-  const handleInteraction = (
+  const handleVideoInteraction = (
     event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>
   ) => {
     const element = event.currentTarget;
@@ -55,8 +58,8 @@ function VideoFeed() {
       <div
         ref={videoDivRef}
         className="relative w-full aspect-square overflow-hidden touch-none"
-        onTouchMove={handleInteraction}
-        onClick={handleInteraction}
+        onTouchMove={handleVideoInteraction}
+        onClick={handleVideoInteraction}
       >
         <VideoSampler
           facingMode={facingMode}
@@ -64,23 +67,24 @@ function VideoFeed() {
           onSample={(pixelMatrix) => {
             setPixelMatrix(pixelMatrix);
             const pixel = pixelMatrix[3][3];
-            setPixelColor(
-              `rgb(${pixel.color[0]}, ${pixel.color[1]}, ${pixel.color[2]})`
-            );
+            setPixelColor(pixelToHex(pixel));
           }}
           pause={isPaused}
         />
         <Frame />
         <Crosshair
-          className="absolute h-5 w-5 top-40 left-40"
+          className={`absolute h-5 w-5 top-40 left-40 transition-colors duration-200 ease-in-out ${
+            isLight(pixelColor) ? "text-black" : "text-white"
+          }`}
           style={{
             top: `${coordinates.y - 10}px`,
             left: `${coordinates.x - 10}px`,
-            color: isLight(pixelColor) ? "#000" : "#fff",
-            transition: "color 0.2s ease-in-out",
           }}
         />
       </div>
+
+      {pixelMatrix?.length > 0 && <ColorViewer pixel={pixelMatrix[3][3]} />}
+
       <div className="flex mt-4 space-x-2">
         <Button
           onClick={toggleCamera}
@@ -114,9 +118,6 @@ function VideoFeed() {
         </div>
       )}
       <div className="mt-4">
-        <p className="mt-2">
-          Pixel Coordinates: ({coordinates.x}, {coordinates.y})
-        </p>
         <p className="mt-2">Closest: {`${closest(pixelColor).name}`}</p>
       </div>
     </div>
