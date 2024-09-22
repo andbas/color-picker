@@ -17,7 +17,11 @@ import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
 import { ColorViewer } from "./color-viewer";
 
-function VideoFeed() {
+interface VideoFeedProps {
+  onOtherClick: () => void;
+}
+
+function VideoFeed({ onOtherClick }: VideoFeedProps) {
   const videoDivRef = useRef<HTMLDivElement>(null);
   const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
     x: Math.floor(window.innerWidth / 2),
@@ -137,7 +141,11 @@ function VideoFeed() {
                 <LetterText />
               )}
             </Button>
-            <Button variant="outline" className="w-16 h-16 border-2">
+            <Button
+              onClick={onOtherClick}
+              variant="outline"
+              className="w-16 h-16 border-2"
+            >
               <Ellipsis />
             </Button>
           </div>
