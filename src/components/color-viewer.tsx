@@ -1,21 +1,50 @@
 import { Pixel } from "@/types";
 import { isLight, pixelToHex, pixelToX } from "@/utils";
 import { ClipboardCopy, Sparkle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ColorViewerProps {
   pixel: Pixel;
   mode?: "hex" | "rgb" | "name";
+  delay?: number;
 }
 
-export function ColorViewer({ pixel, mode = "hex" }: ColorViewerProps) {
+export function ColorViewer({
+  pixel,
+  mode = "hex",
+  delay = 150,
+}: ColorViewerProps) {
   const [copied, setCopied] = useState(false);
+  const [value, setValue] = useState(pixelToX(pixel, mode));
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const pixelColor = pixelToHex(pixel);
   const pixelValue = pixelToX(pixel, mode);
 
+  useEffect(() => {
+    if (mode !== "name") {
+      setValue(pixelValue);
+      return;
+    }
+
+    const update = () => {
+      setValue(pixelValue);
+      setLastUpdate(Date.now());
+    };
+
+    // Slow down the update cause jumping words are annoying
+    if (Date.now() - lastUpdate >= delay) {
+      update();
+    } else {
+      const timer = setTimeout(update, delay);
+      return () => clearTimeout(timer);
+    }
+
+    // pixelColor is more sensetive
+  }, [pixelValue, mode, delay]);
+
   const handleClick = () => {
-    navigator.clipboard.writeText(pixelValue).then(() => {
+    navigator.clipboard.writeText(value).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1000);
     });
@@ -47,7 +76,7 @@ export function ColorViewer({ pixel, mode = "hex" }: ColorViewerProps) {
             copied ? "fade-out opacity-0" : "fade-in"
           }`}
         >
-          {pixelValue}
+          {value}
         </span>
       </div>
     </div>
