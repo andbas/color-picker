@@ -6,7 +6,7 @@ import {
   Crosshair,
   SwitchCamera,
   Play,
-  Pause,
+  Aperture,
   Ellipsis,
   Hash,
   Palette,
@@ -122,7 +122,7 @@ function VideoFeed() {
               variant="outline"
               className="w-16 h-16 border-2"
             >
-              {isPaused ? <Play /> : <Pause />}
+              {isPaused ? <Play /> : <Aperture />}
             </Button>
             <Button
               onClick={toggleNamingMode}
