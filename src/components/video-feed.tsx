@@ -58,7 +58,7 @@ function VideoFeed() {
         ref={videoDivRef}
         className="relative w-full aspect-square overflow-hidden touch-none"
         onTouchMove={handleVideoInteraction}
-        onClick={handleVideoInteraction}
+        onMouseUp={handleVideoInteraction}
       >
         <VideoSampler
           facingMode={facingMode}
