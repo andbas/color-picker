@@ -1,4 +1,4 @@
-import { useState, MouseEvent, useEffect, useRef } from "react";
+import { useState, MouseEvent, TouchEvent, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
 import { closest, isLight } from "color-2-name";
@@ -35,11 +35,15 @@ function VideoFeed() {
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
   };
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
+  const handleInteraction = (
+    event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>
+  ) => {
     const element = event.currentTarget;
     const rect = element.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const client = "touches" in event ? event.touches[0] : event;
+
+    const x = client.clientX - rect.left;
+    const y = client.clientY - rect.top;
     setCoordinates({
       x: Math.round(x),
       y: Math.round(y),
@@ -51,7 +55,8 @@ function VideoFeed() {
       <div
         ref={videoDivRef}
         className="relative w-full aspect-square overflow-hidden"
-        onClick={handleClick}
+        onTouchMove={handleInteraction}
+        onClick={handleInteraction}
       >
         <VideoSampler
           facingMode={facingMode}
