@@ -1,23 +1,26 @@
 import { Pixel } from "@/types";
-import { isLight, pixelToHex } from "@/utils";
+import { isLight, pixelToHex, pixelToX } from "@/utils";
 import { ClipboardCopy, Sparkle } from "lucide-react";
 import { useState } from "react";
 
 interface ColorViewerProps {
   pixel: Pixel;
+  mode?: "hex" | "rgb" | "name";
 }
 
-export function ColorViewer({ pixel }: ColorViewerProps) {
+export function ColorViewer({ pixel, mode = "hex" }: ColorViewerProps) {
   const [copied, setCopied] = useState(false);
 
+  const pixelColor = pixelToHex(pixel);
+  const pixelValue = pixelToX(pixel, mode);
+
   const handleClick = () => {
-    navigator.clipboard.writeText(pixelColor).then(() => {
+    navigator.clipboard.writeText(pixelValue).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1000);
     });
   };
 
-  const pixelColor = pixelToHex(pixel);
   return (
     <div
       onClick={handleClick}
@@ -44,7 +47,7 @@ export function ColorViewer({ pixel }: ColorViewerProps) {
             copied ? "fade-out opacity-0" : "fade-in"
           }`}
         >
-          {pixelColor}
+          {pixelValue}
         </span>
       </div>
     </div>

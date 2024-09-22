@@ -21,3 +21,14 @@ export function pixelToHex(pixel: Pixel) {
     .padStart(2, "0")
     .toUpperCase()}`;
 }
+
+export function pixelToX(pixel: Pixel, mode?: "hex" | "rgb" | "name") {
+  if (mode === "rgb") {
+    return `rgb(${pixel.color.join(", ")})`;
+  }
+  if (mode === "name") {
+    return closest(pixelToHex(pixel)).name;
+  }
+
+  return pixelToHex(pixel);
+}

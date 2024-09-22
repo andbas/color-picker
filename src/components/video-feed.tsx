@@ -1,8 +1,17 @@
 import { PixelMatrixType } from "@/types";
-import { pixelToHex, isLight, closest } from "@/utils";
+import { pixelToHex, isLight } from "@/utils";
 import { useState, MouseEvent, TouchEvent, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
-import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
+import {
+  Crosshair,
+  SwitchCamera,
+  Play,
+  Pause,
+  Ellipsis,
+  Hash,
+  Palette,
+  LetterText,
+} from "lucide-react";
 import { PixelSquareMatrix } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
@@ -20,9 +29,16 @@ function VideoFeed() {
   const [pixelMatrix, setPixelMatrix] = useState<PixelMatrixType>([]);
   const [isPaused, setIsPaused] = useState(false);
   const [pixelColor, setPixelColor] = useState<string>("rgb(0, 0, 0)");
+  const [namingMode, setNamingMode] = useState<"hex" | "rgb" | "name">("name");
 
   const togglePlay = () => {
     setIsPaused((prevState) => !prevState);
+  };
+
+  const toggleNamingMode = () => {
+    setNamingMode((prevMode) =>
+      prevMode === "hex" ? "rgb" : prevMode === "rgb" ? "name" : "hex"
+    );
   };
 
   useEffect(() => {
@@ -82,43 +98,51 @@ function VideoFeed() {
         />
       </div>
 
-      {pixelMatrix?.length > 0 && <ColorViewer pixel={pixelMatrix[3][3]} />}
-
-      <div className="flex mt-4 space-x-2">
-        <Button
-          onClick={toggleCamera}
-          variant="outline"
-          size="icon"
-          className="p-2"
-        >
-          <SwitchCamera />
-        </Button>
-        <Button
-          onClick={togglePlay}
-          variant="outline"
-          size="icon"
-          className="p-2"
-        >
-          {isPaused ? <Play /> : <Pause />}
-        </Button>
-      </div>
+      {pixelMatrix?.length > 0 && (
+        <ColorViewer pixel={pixelMatrix[3][3]} mode={namingMode} />
+      )}
 
       {pixelMatrix?.length > 0 && (
-        <div className="flex mt-4 space-x-4">
+        <div className="flex mt-8 space-x-8">
           <PixelSquareMatrix
             pixels={pixelMatrix}
-            className="w-20 h-20 rounded-md overflow-hidden"
+            className="w-32 h-32 rounded-md overflow-hidden"
             highlight={[3, 3]}
           />
-          <div
-            className="w-20 h-20 rounded-md"
-            style={{ backgroundColor: pixelColor }}
-          ></div>
+          <div className="grid grid-cols-2 gap-1 opacity-80">
+            <Button
+              onClick={toggleCamera}
+              variant="outline"
+              className="w-16 h-16 border-2"
+            >
+              <SwitchCamera />
+            </Button>
+            <Button
+              onClick={togglePlay}
+              variant="outline"
+              className="w-16 h-16 border-2"
+            >
+              {isPaused ? <Play /> : <Pause />}
+            </Button>
+            <Button
+              onClick={toggleNamingMode}
+              variant="outline"
+              className="w-16 h-16 border-2"
+            >
+              {namingMode === "hex" ? (
+                <Hash />
+              ) : namingMode === "rgb" ? (
+                <Palette />
+              ) : (
+                <LetterText />
+              )}
+            </Button>
+            <Button variant="outline" className="w-16 h-16 border-2">
+              <Ellipsis />
+            </Button>
+          </div>
         </div>
       )}
-      <div className="mt-4">
-        <p className="mt-2">{`${closest(pixelColor).name}`}</p>
-      </div>
     </div>
   );
 }
