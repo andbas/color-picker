@@ -1,9 +1,8 @@
 import { PixelMatrixType } from "@/types";
-import { pixelToHex, isLight } from "@/utils";
+import { pixelToHex, isLight, closest } from "@/utils";
 import { useState, MouseEvent, TouchEvent, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Crosshair, SwitchCamera, Play, Pause } from "lucide-react";
-import { closest } from "color-2-name";
 import { PixelSquareMatrix } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
@@ -118,7 +117,7 @@ function VideoFeed() {
         </div>
       )}
       <div className="mt-4">
-        <p className="mt-2">Closest: {`${closest(pixelColor).name}`}</p>
+        <p className="mt-2">{`${closest(pixelColor).name}`}</p>
       </div>
     </div>
   );

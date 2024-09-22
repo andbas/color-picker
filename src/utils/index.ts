@@ -1,7 +1,13 @@
 import { Pixel } from "@/types";
 import { isLight } from "color-2-name";
+import namer from "color-namer";
 
-export { isLight };
+const closest = (colorStr: string) => {
+  const { ntc } = namer(colorStr);
+  return ntc[0];
+};
+
+export { isLight, closest };
 
 export function pixelToHex(pixel: Pixel) {
   return `#${pixel.color[0]

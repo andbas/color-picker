@@ -34,9 +34,9 @@ export function ColorViewer({ pixel }: ColorViewerProps) {
             copied ? "fade-in" : "fade-out opacity-0"
           }`}
         >
-          <Sparkle className="w-5 h-5 pr-2" />
-          <ClipboardCopy className="w-4 h-4" />
-          <Sparkle className="w-5 h-5 pl-2" />
+          <Sparkle className="w-5 h-5 pr-3" />
+          <ClipboardCopy className="w-5 h-5" />
+          <Sparkle className="w-5 h-5 pl-3" />
         </span>
 
         <span
