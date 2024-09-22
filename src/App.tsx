@@ -8,6 +8,7 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
 } from "./components/ui/sheet";
 import VideoFeed from "./components/video-feed";
 
@@ -27,10 +28,12 @@ function App() {
           <SheetContent>
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
+              <SheetDescription>
+                As soon as I'll have something to add here, I'll add it here.
+              </SheetDescription>
             </SheetHeader>
-
             <div className="text-sm text-muted-foreground my-10">
-              As soon as I'll have something to add here, I'll add it here. 🙂
+              So great that you're using the app! Thanks for your support!
             </div>
             <SheetFooter>
               <ModeToggle />
