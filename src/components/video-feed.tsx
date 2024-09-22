@@ -54,7 +54,7 @@ function VideoFeed() {
     <div className="flex flex-col items-center">
       <div
         ref={videoDivRef}
-        className="relative w-full aspect-square overflow-hidden"
+        className="relative w-full aspect-square overflow-hidden touch-none"
         onTouchMove={handleInteraction}
         onClick={handleInteraction}
       >
