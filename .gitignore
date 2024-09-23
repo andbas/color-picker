@@ -25,3 +25,8 @@ dist-ssr
 
 # Build Artifacts
 *.tsbuildinfo
+
+# NextJS
+.next
+next-env.d.ts
+dist

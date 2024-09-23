@@ -7,16 +7,24 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Plugins NextJs */
+    "plugins": [{ "name": "next" }],
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "composite": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "./next-env.d.ts", "./dist/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
