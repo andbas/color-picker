@@ -1,7 +1,8 @@
 import { Pixel } from "@/types";
 import { isLight, pixelToHex, pixelToX } from "@/utils";
+import { useDebounce } from "@uidotdev/usehooks";
 import { ClipboardCopy, Sparkle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface ColorViewerProps {
   pixel: Pixel;
@@ -15,33 +16,13 @@ export function ColorViewer({
   delay = 150,
 }: ColorViewerProps) {
   const [copied, setCopied] = useState(false);
-  const [value, setValue] = useState(pixelToX(pixel, mode));
-  const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const pixelColor = pixelToHex(pixel);
   const pixelValue = pixelToX(pixel, mode);
-
-  useEffect(() => {
-    if (mode !== "name") {
-      setValue(pixelValue);
-      return;
-    }
-
-    const update = () => {
-      setValue(pixelValue);
-      setLastUpdate(Date.now());
-    };
-
-    // Slow down the update cause jumping words are annoying
-    if (Date.now() - lastUpdate >= delay) {
-      update();
-    } else {
-      const timer = setTimeout(update, delay);
-      return () => clearTimeout(timer);
-    }
-
-    // pixelColor is more sensetive
-  }, [pixelValue, mode, delay]);
+  const value =
+    mode === "name"
+      ? useDebounce(pixelValue, delay)
+      : useDebounce(pixelValue, 0);
 
   const handleClick = () => {
     navigator.clipboard.writeText(value).then(() => {
