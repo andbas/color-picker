@@ -7,9 +7,7 @@ const closest = (colorStr: string) => {
   return ntc[0];
 };
 
-export { isLight, closest };
-
-export function pixelToHex(pixel: Pixel) {
+const pixelToHex = (pixel: Pixel) => {
   return `#${pixel.color[0]
     .toString(16)
     .padStart(2, "0")
@@ -20,9 +18,9 @@ export function pixelToHex(pixel: Pixel) {
     .toString(16)
     .padStart(2, "0")
     .toUpperCase()}`;
-}
+};
 
-export function pixelToX(pixel: Pixel, mode?: "hex" | "rgb" | "name") {
+const pixelToX = (pixel: Pixel, mode?: "hex" | "rgb" | "name") => {
   if (mode === "rgb") {
     return `rgb(${pixel.color.join(", ")})`;
   }
@@ -31,4 +29,6 @@ export function pixelToX(pixel: Pixel, mode?: "hex" | "rgb" | "name") {
   }
 
   return pixelToHex(pixel);
-}
+};
+
+export { isLight, closest, pixelToHex, pixelToX };
