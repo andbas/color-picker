@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ModeToggle } from "./components/mode-toggle";
 import {
   Sheet,
@@ -12,6 +12,8 @@ import {
 import VideoFeed from "./components/video-feed";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Consent } from "./components/consent";
+import { Button } from "./components/ui/button";
+import { Cookie } from "lucide-react";
 
 type Consent =
   | "all-cookies-accepted"
@@ -20,10 +22,15 @@ type Consent =
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [consentOpen, setConsentOpen] = useState(true);
   const [consent, setConsent] = useLocalStorage<Consent>(
     "cookies-consent",
     undefined
   );
+
+  useEffect(() => {
+    setConsentOpen(consent === undefined);
+  }, [consent]);
 
   return (
     <>
@@ -49,12 +56,27 @@ function App() {
               So great that you're using the app! Thanks for your support!
             </div>
             <SheetFooter>
-              <ModeToggle />
+              <div className="flex gap-1">
+                <ModeToggle />
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setConsentOpen(true);
+                  }}
+                >
+                  <Cookie />
+                  <span className="sr-only">Consent Mode</span>
+                </Button>
+              </div>
             </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
-      <Consent consent={consent} setConsent={setConsent} />
+      {consentOpen && (
+        <Consent setConsent={setConsent} onOpenChange={setConsentOpen} />
+      )}
     </>
   );
 }
