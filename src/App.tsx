@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import { ThemeProvider } from "./components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import {
   Sheet,
@@ -11,18 +10,32 @@ import {
   SheetDescription,
 } from "./components/ui/sheet";
 import VideoFeed from "./components/video-feed";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { Consent } from "./components/consent";
+
+type Consent =
+  | "all-cookies-accepted"
+  | "reject-non-essential-cookies"
+  | undefined;
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [consent, setConsent] = useLocalStorage<Consent>(
+    "cookies-consent",
+    undefined
+  );
+
   return (
-    <ThemeProvider defaultTheme="system" storageKey="ui-theme">
+    <>
       <div className="justify-center bg-background">
         <div className="max-w-screen-sm mx-auto">
-          <VideoFeed
-            onOtherClick={() => {
-              setMenuOpen(true);
-            }}
-          />
+          {consent && (
+            <VideoFeed
+              onOtherClick={() => {
+                setMenuOpen(true);
+              }}
+            />
+          )}
         </div>
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetContent>
@@ -41,7 +54,8 @@ function App() {
           </SheetContent>
         </Sheet>
       </div>
-    </ThemeProvider>
+      <Consent consent={consent} setConsent={setConsent} />
+    </>
   );
 }
 
