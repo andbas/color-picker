@@ -13,7 +13,7 @@ import VideoFeed from "./components/video-feed";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Consent } from "./components/consent";
 import { Button } from "./components/ui/button";
-import { Cookie } from "lucide-react";
+import { Cookie, Github } from "lucide-react";
 
 type Consent =
   | "all-cookies-accepted"
@@ -56,10 +56,10 @@ function App() {
               So great that you're using the app! Thanks for your support!
             </div>
             <SheetFooter>
-              <div className="flex gap-1">
-                <ModeToggle />
+              <div className="flex gap-4 mx-auto">
+                <ModeToggle variant="ghost" />
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="icon"
                   onClick={() => {
                     setMenuOpen(false);
@@ -68,6 +68,19 @@ function App() {
                 >
                   <Cookie />
                   <span className="sr-only">Consent Mode</span>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/andbas/color-picker/",
+                      "_blank"
+                    )
+                  }
+                >
+                  <Github />
+                  <span className="sr-only">Github</span>
                 </Button>
               </div>
             </SheetFooter>

@@ -9,13 +9,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/components/theme-provider";
 
-export function ModeToggle() {
+interface ModeToggleProps {
+  variant?:
+    | "default"
+    | "outline"
+    | "ghost"
+    | "link"
+    | "secondary"
+    | "destructive";
+}
+
+export function ModeToggle({ variant = "default" }: ModeToggleProps) {
   const { setTheme, theme } = useTheme();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant={variant} size="icon">
           {theme === "light" && <Sun />}
           {theme === "dark" && <Moon />}
           {theme === "system" && <SunMoon />}
