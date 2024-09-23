@@ -31,21 +31,21 @@ export function Consent({ consent, setConsent }: ConsentProps) {
           <SheetTitle>We Respect Your Privacy</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        <div className="text-muted-foreground my-4">
+        <div className="my-4">
           <h3 className="text-lg font-semibold mb-1">
             Camera Access <Camera className="inline pl-1" />
           </h3>
           <p className="text-sm">
             Our application allows you to pick colors from your surroundings
             using your camera. To provide this functionality, we need access to
-            your camera. We respect your privacy -{" "}
+            your camera. We respect your privacy —{" "}
             <strong>
               all data stays on your device, and we do not store or send this
               information anywhere.
             </strong>
           </p>
         </div>
-        <div className="text-muted-foreground my-4">
+        <div className="my-4">
           <h3 className="text-lg font-semibold mb-1">
             Cookies Consent <Cookie className="inline pl-1" />
           </h3>
@@ -54,8 +54,8 @@ export function Consent({ consent, setConsent }: ConsentProps) {
             and to improve your experience.{" "}
             <strong>
               Your consent is needed for this. Even without accepting, the
-              application will work fully for you—accepting helps us enhance the
-              app for all users.{" "}
+              application will work fully for you — accepting helps us enhance
+              the app for all users.{" "}
               {/* TODO: Add a link to the cookies policy page */}
               <a href="/privacy/cookies" className="underline">
                 Learn more
