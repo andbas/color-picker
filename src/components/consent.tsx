@@ -15,7 +15,7 @@ export default function Consent() {
 
   return (
     <Sheet open={consentDialogOpen}>
-      <SheetContent side="bottom">
+      <SheetContent side="bottom" closable={false}>
         <SheetHeader>
           <SheetTitle>We Respect Your Privacy</SheetTitle>
           <SheetDescription></SheetDescription>
