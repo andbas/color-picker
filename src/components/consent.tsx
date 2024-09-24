@@ -8,25 +8,13 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Camera, Cookie } from "lucide-react";
+import { useConsent } from "@/hooks/use-consent";
 
-interface ConsentProps {
-  onOpenChange: (open: boolean) => void;
-  setConsent: (
-    consent: "all-cookies-accepted" | "reject-non-essential-cookies"
-  ) => void;
-}
+export default function Consent() {
+  const { consentDialogOpen, setConsent } = useConsent();
 
-export function Consent({ setConsent, onOpenChange }: ConsentProps) {
   return (
-    <Sheet
-      open={true}
-      onOpenChange={(value) => {
-        onOpenChange(value);
-        if (value === false) {
-          setConsent("reject-non-essential-cookies");
-        }
-      }}
-    >
+    <Sheet open={consentDialogOpen}>
       <SheetContent side="bottom">
         <SheetHeader>
           <SheetTitle>We Respect Your Privacy</SheetTitle>
@@ -70,7 +58,6 @@ export function Consent({ setConsent, onOpenChange }: ConsentProps) {
           <Button
             onClick={() => {
               setConsent("all-cookies-accepted");
-              onOpenChange(false);
             }}
           >
             Accept All Cookies
@@ -79,7 +66,6 @@ export function Consent({ setConsent, onOpenChange }: ConsentProps) {
             variant="outline"
             onClick={() => {
               setConsent("reject-non-essential-cookies");
-              onOpenChange(false);
             }}
           >
             Reject Non-Essential Cookies

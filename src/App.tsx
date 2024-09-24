@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ModeToggle } from "./components/mode-toggle";
 import {
   Sheet,
@@ -10,39 +10,23 @@ import {
   SheetDescription,
 } from "./components/ui/sheet";
 import VideoFeed from "./components/video-feed";
-import { useLocalStorage } from "@uidotdev/usehooks";
-import { Consent } from "./components/consent";
 import { Button } from "./components/ui/button";
 import { Cookie, Github } from "lucide-react";
-
-type Consent =
-  | "all-cookies-accepted"
-  | "reject-non-essential-cookies"
-  | undefined;
+import { useConsent } from "./hooks/use-consent";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [consentOpen, setConsentOpen] = useState(true);
-  const [consent, setConsent] = useLocalStorage<Consent>(
-    "cookies-consent",
-    undefined
-  );
-
-  useEffect(() => {
-    setConsentOpen(consent === undefined);
-  }, [consent]);
+  const { setConsentDialogOpen } = useConsent();
 
   return (
     <>
       <div className="justify-center bg-background">
         <div className="max-w-screen-sm mx-auto">
-          {consent && (
-            <VideoFeed
-              onOtherClick={() => {
-                setMenuOpen(true);
-              }}
-            />
-          )}
+          <VideoFeed
+            onOtherClick={() => {
+              setMenuOpen(true);
+            }}
+          />
         </div>
       </div>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -63,8 +47,8 @@ function App() {
                 variant="ghost"
                 size="icon"
                 onClick={() => {
+                  setConsentDialogOpen(true);
                   setMenuOpen(false);
-                  setConsentOpen(true);
                 }}
               >
                 <Cookie />
@@ -87,9 +71,6 @@ function App() {
           </SheetFooter>
         </SheetContent>
       </Sheet>
-      {consentOpen && (
-        <Consent setConsent={setConsent} onOpenChange={setConsentOpen} />
-      )}
     </>
   );
 }
