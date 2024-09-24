@@ -1,9 +1,8 @@
 "use client";
-import dynamic from "next/dynamic";
-
-const Consent = dynamic(() => import("@/components/consent"), {
-  ssr: false,
-});
+import { ConsentProvider } from "@/hooks/use-consent";
+import { SidebarMenuProvider } from "@/hooks/use-sidebar-menu";
+import Consent from "@/components/consent";
+import SidebarMenu from "@/components/sidebar-menu";
 
 export default function RootLayout({
   children,
@@ -12,9 +11,14 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {children}
+      <ConsentProvider>
+        <SidebarMenuProvider>
+          {children}
 
-      <Consent />
+          <SidebarMenu />
+          <Consent />
+        </SidebarMenuProvider>
+      </ConsentProvider>
     </>
   );
 }

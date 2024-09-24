@@ -1,5 +1,5 @@
+import "../index.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ConsentProvider } from "@/hooks/use-consent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ConsentProvider>{children}</ConsentProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>
