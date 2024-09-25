@@ -5,7 +5,7 @@ import VideoFeed from "@/components/video-feed";
 export default function AppPage() {
   return (
     <div className="justify-center bg-background">
-      <div className="max-w-screen-sm mx-auto">
+      <div className="max-w-xs mx-auto">
         <VideoFeed />
       </div>
     </div>
