@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +18,8 @@ import { useConsent } from "@/hooks/use-consent";
 export default function SidebarMenu() {
   const { sidebarOpen, setSidebarOpen } = useSidebarMenu();
   const { setConsentDialogOpen } = useConsent();
+  const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
@@ -31,16 +34,30 @@ export default function SidebarMenu() {
           <nav className="grid items-start text-sm font-medium">
             <Link
               href="/"
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary"
-              onClick={() => setSidebarOpen(false)}
+              className={`flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary ${
+                pathname === "/"
+                  ? "bg-muted text-primary"
+                  : "text-muted-foreground"
+              }`}
+              onClick={() => {
+                setSidebarOpen(false);
+                router.push("/");
+              }}
             >
               <Home className="h-4 w-4" />
               Home
             </Link>
             <Link
               href="/app"
-              className="flex items-center gap-3 rounded-md bg-muted px-3 py-3 text-primary transition-all hover:text-primary"
-              onClick={() => setSidebarOpen(false)}
+              className={`flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary ${
+                pathname === "/app"
+                  ? "bg-muted text-primary"
+                  : "text-muted-foreground"
+              }`}
+              onClick={() => {
+                setSidebarOpen(false);
+                router.push("/app");
+              }}
             >
               <Aperture className="h-4 w-4" />
               GetColor

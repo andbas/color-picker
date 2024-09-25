@@ -9,7 +9,7 @@ export default function HomePage() {
         href="/app"
         className="flex items-center gap-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-3 transition-all"
       >
-        <Aperture className="h-4 w-4" /> Launch Color Picker
+        <Aperture className="h-5 w-5" /> Launch GetColor
       </Link>
     </div>
   );
