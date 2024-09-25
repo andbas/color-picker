@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "next dev",
+    "build": "next build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "next start"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -19,6 +19,8 @@
     "color-2-name": "^1.4.4",
     "color-namer": "^1.4.0",
     "lucide-react": "^0.441.0",
+    "next": "^14.2.13",
+    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.2",

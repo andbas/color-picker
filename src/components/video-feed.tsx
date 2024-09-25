@@ -16,16 +16,15 @@ import { PixelSquareMatrix } from "./pixel-matrix";
 import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
 import { ColorViewer } from "./color-viewer";
+import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
 
-interface VideoFeedProps {
-  onOtherClick: () => void;
-}
+interface VideoFeedProps {}
 
-function VideoFeed({ onOtherClick }: VideoFeedProps) {
+function VideoFeed({}: VideoFeedProps) {
   const videoDivRef = useRef<HTMLDivElement>(null);
   const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
-    x: Math.floor(window.innerWidth / 2),
-    y: Math.floor(window.innerWidth / 2),
+    x: -100,
+    y: -100,
   });
   const [facingMode, setFacingMode] = useState<"user" | "environment">(
     "environment"
@@ -34,6 +33,7 @@ function VideoFeed({ onOtherClick }: VideoFeedProps) {
   const [isPaused, setIsPaused] = useState(false);
   const [pixelColor, setPixelColor] = useState<string>("rgb(0, 0, 0)");
   const [namingMode, setNamingMode] = useState<"hex" | "rgb" | "name">("name");
+  const { setSidebarOpen } = useSidebarMenu();
 
   const togglePlay = () => {
     setIsPaused((prevState) => !prevState);
@@ -142,7 +142,7 @@ function VideoFeed({ onOtherClick }: VideoFeedProps) {
               )}
             </Button>
             <Button
-              onClick={onOtherClick}
+              onClick={() => setSidebarOpen(true)}
               variant="outline"
               className="w-16 h-16 border-2"
             >
