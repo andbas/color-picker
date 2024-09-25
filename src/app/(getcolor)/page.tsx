@@ -51,7 +51,7 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
-        <section className="text-card-foreground shadow-sm flex flex-col space-y-1.5 my-8">
+        <section className="text-card-foreground flex flex-col space-y-1.5 my-8">
           <h2 className="text-2xl font-semibold leading-none tracking-tight">
             Turn Any Seen Color into Usable Code
           </h2>
@@ -63,7 +63,7 @@ export default function HomePage() {
             discover the exact HEX and RGB values, along with the color's name.
           </p>
         </section>
-        <section className="text-card-foreground shadow-sm flex flex-col space-y-1.5 my-10">
+        <section className="text-card-foreground flex flex-col space-y-1.5 my-10">
           <h2 className="text-4xl font-semibold leading-none tracking-tight text-center mb-5">
             Key Features
           </h2>
@@ -146,7 +146,7 @@ export default function HomePage() {
             </li>
           </ul>
         </section>
-        <footer className="text-card-foreground shadow-sm flex flex-col space-y-1.5 my-10">
+        <footer className="text-card-foreground flex flex-col space-y-1.5 my-10">
           <div className="flex items-center justify-center">
             <Link
               href="/app"
