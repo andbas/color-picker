@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.legal h1 {
+  @apply text-2xl font-bold mb-4;
+}
+.legal h2 {
+  @apply text-xl font-bold mb-2;
+}
+.legal h3 {
+  @apply text-lg font-bold mb-2;
+}
+
+.legal a {
+  @apply text-blue-600 hover:underline;
+}
+
+.legal p {
+  @apply mb-2;
+}
+
+.legal ul {
+  @apply list-disc ml-4;
+}
+
+.legal ol {
+  @apply list-decimal ml-4;
+}
+
+.legal li {
+  @apply mb-2;
+}

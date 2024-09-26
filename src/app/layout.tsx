@@ -1,6 +1,10 @@
+import SidebarMenu from "@/components/sidebar-menu";
 import "../index.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ConsentProvider } from "@/hooks/use-consent";
+import { SidebarMenuProvider } from "@/hooks/use-sidebar-menu";
 import { Metadata } from "next";
+import Consent from "@/components/consent";
 
 export const metadata: Metadata = {
   title: "GetColor: Camera Color Picker",
@@ -23,7 +27,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ConsentProvider>
+            <SidebarMenuProvider>
+              {children}
+
+              <SidebarMenu />
+              <Consent />
+            </SidebarMenuProvider>
+          </ConsentProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -10,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Aperture, Cookie, Github, Home } from "lucide-react";
+import { Aperture, Cookie, Github, Home, Scale } from "lucide-react";
 
 import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
 import { useConsent } from "@/hooks/use-consent";
@@ -23,14 +25,14 @@ export default function SidebarMenu() {
 
   return (
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-      <SheetContent>
+      <SheetContent className="flex flex-col">
         <SheetHeader>
           <SheetTitle>Menu</SheetTitle>
           <SheetDescription>
             As soon as I'll have something to add here, I'll add it here.
           </SheetDescription>
         </SheetHeader>
-        <div className="py-6">
+        <div className="py-6 flex-grow">
           <nav className="grid items-start text-sm font-medium">
             <Link
               href="/"
@@ -64,7 +66,10 @@ export default function SidebarMenu() {
             </Link>
           </nav>
         </div>
-        <SheetFooter>
+
+        {/* Move Privacy and Legal link here, right above the footer */}
+
+        <SheetFooter className="flex flex-col gap-2">
           <div className="flex gap-4 mx-auto">
             <ModeToggle variant="ghost" />
             <Button
@@ -89,10 +94,26 @@ export default function SidebarMenu() {
                 );
               }}
             >
-              {/* TODO: Add a custom icon as Github is deprecated in lucide */}
               <Github />
               <span className="sr-only">Github</span>
             </Button>
+          </div>
+          <div className="flex gap-4 mx-auto">
+            <Link
+              href="/legal"
+              className={`flex items-center gap-3 rounded-lg transition-all hover:text-primary ${
+                pathname.startsWith("/legal")
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              }`}
+              onClick={() => {
+                setSidebarOpen(false);
+                router.push("/legal");
+              }}
+            >
+              <Scale className="h-4 w-4" />
+              Privacy and Legal
+            </Link>
           </div>
         </SheetFooter>
       </SheetContent>
