@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Menu, Scale } from "lucide-react";
 import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function RootLayout({
   children,
@@ -17,9 +16,20 @@ export default function RootLayout({
     <>
       <header className="w-full sticky z-50 top-0 left-0 bg-background">
         <div className="max-w-xs flex justify-between items-center py-4 mx-auto">
-          <Link href="/" className="pl-3 flex gap-2">
-            <Image src="/icon.svg" alt="GetColor.io" width={24} height={24} />
-            GetColor.io
+          <Link href="/" className="pl-3 flex items-center gap-2">
+            <picture className="w-8 h-8">
+              <source
+                srcSet="/getcolor32.png, /getcolor32@2x.png 2x, /getcolor32@3x.png 3x"
+                type="image/png"
+              />
+              <img
+                src="/getcolor.svg"
+                alt="GetColor.io"
+                width="32"
+                height="32"
+              />
+            </picture>
+            <span>GetColor.io</span>
           </Link>
 
           <Button
