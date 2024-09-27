@@ -1,0 +1,14 @@
+{
+  "name": "GetColor.io",
+  "short_name": "GetColor.io",
+  "icons": [
+    {
+      "src": "/getcolor512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F1F4F3",
+  "background_color": "#050A08",
+  "display": "standalone"
+}
