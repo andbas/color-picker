@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Aperture, Menu, Scale } from "lucide-react";
+import { Menu, Scale } from "lucide-react";
 import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function RootLayout({
   children,
@@ -16,8 +17,8 @@ export default function RootLayout({
     <>
       <header className="w-full sticky z-50 top-0 left-0 bg-background">
         <div className="max-w-xs flex justify-between items-center py-4 mx-auto">
-          <Link href="/" className="flex gap-3">
-            <Aperture className="w-6 h-6" />
+          <Link href="/" className="pl-3 flex gap-2">
+            <Image src="/icon.svg" alt="GetColor.io" width={24} height={24} />
             GetColor.io
           </Link>
 
