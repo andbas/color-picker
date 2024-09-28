@@ -7,9 +7,9 @@ import { Metadata } from "next";
 import Consent from "@/components/consent";
 
 export const metadata: Metadata = {
-  title: "GetColor: Camera Color Picker",
+  title: "GetColor.io: Pick Colors from Your Surroundings (Free)",
   description:
-    "The application allows you to pick colors from your surroundings using your camera",
+    "Allows you to pick colors from your surroundings using your camera",
 };
 
 export default function RootLayout({

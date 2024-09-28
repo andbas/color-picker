@@ -1,3 +1,5 @@
+"use client";
+
 import { PixelMatrixType } from "@/types";
 import { pixelToHex, isLight } from "@/utils";
 import { useState, MouseEvent, TouchEvent, useEffect, useRef } from "react";

@@ -9,11 +9,12 @@ export default function HomePage() {
     <>
       <section className="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-1.5 p-6 my-2">
         <h1 className="text-4xl font-semibold leading-slug tracking-tight">
-          Capture Every Color Around You
+          Capture and Name Every Color Around You
         </h1>
         <h3 className="pb-6 pt-2 text-2xl leading-none">
           Instantly identify and use real-world colors with our browser-based
-          Pixel Color Detector App.
+          camera color detector. Get the color imidiatelly in RGB, HEX and Color
+          Name.
         </h3>
         <div className="flex items-center justify-center">
           <Link

@@ -1,6 +1,11 @@
-"use client";
-
 import VideoFeed from "@/components/video-feed";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "GetColor.io: Application",
+  description:
+    "GetColor.io point camera to the color you want to pick and get the color code",
+};
 
 export default function AppPage() {
   return (
