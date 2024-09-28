@@ -20,19 +20,31 @@ export function VideoSampler({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: facingMode } })
+    const video = videoRef.current;
+    if (!video) return;
+
+    const userMediaPromise = navigator.mediaDevices.getUserMedia({
+      video: { facingMode: facingMode },
+      audio: false,
+    });
+
+    userMediaPromise
       .then((stream) => {
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
+        const video = videoRef.current;
+        if (!video) return;
+
+        video.srcObject = null;
+
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          video.play();
+        };
       })
       .catch((error) => {
         console.error("Error accessing video stream:", error);
       });
 
     // Flip the image horizontally if facingMode is user
-
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext("2d", {
@@ -50,14 +62,30 @@ export function VideoSampler({
       context.restore();
       context.save();
     }
+
+    return () => {
+      userMediaPromise.then((stream) => {
+        stream.getTracks().forEach((track) => track.stop());
+      });
+
+      const video = videoRef.current;
+      if (video) {
+        video.srcObject = null;
+      }
+    };
   }, [facingMode]);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const currentStream = video.srcObject as MediaStream;
+    if (!currentStream) return;
+
     if (pause) {
-      videoRef.current?.pause();
+      video.pause();
     } else {
-      // TODO: Fix this, play return a promise and we need to wait for it to resolve before we can call play or pause
-      videoRef.current?.play();
+      video.play();
     }
   }, [pause]);
 
@@ -168,7 +196,6 @@ export function VideoSampler({
       <video
         ref={videoRef}
         muted
-        autoPlay={!pause}
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover filter-none"
       ></video>
