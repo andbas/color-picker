@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import "../../index.css";
-import { CloudOff, Focus, Hash, ShieldCheck, Smartphone } from "lucide-react";
+import {
+  Aperture,
+  CloudOff,
+  Focus,
+  Hash,
+  PackageOpen,
+  Receipt,
+  ShieldCheck,
+  Smartphone,
+} from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -44,11 +53,10 @@ export default function HomePage() {
         <ul className="space-y-4">
           <li className="flex items-start">
             <span className="mr-2">
-              {/* <Camera /> */}
-              <Smartphone />
+              <Aperture />
             </span>
             <div>
-              <strong>Real-Time Color Detection</strong>
+              <strong>Camera Color Picker</strong>
               <p>
                 Point your camera and tap anywhere on the screen to instantly
                 get color details.
@@ -90,6 +98,32 @@ export default function HomePage() {
                 directly on your device. Your camera feed is never transmitted
                 or stored on any server, ensuring your data remains completely
                 private.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">
+              <Receipt />
+            </span>
+            <div>
+              <strong>Free, No Ads</strong>
+              <p>
+                Our camera color picker is free forever, without ads, sign-up or
+                installation. Just open the app in your browser and start
+                detecting colors.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">
+              <PackageOpen />
+            </span>
+            <div>
+              <strong>Open Source</strong>
+              <p>
+                Our code is publicly available, ensuring transparency,
+                community-driven improvements, and the ability to customize the
+                app to your specific needs.
               </p>
             </div>
           </li>
