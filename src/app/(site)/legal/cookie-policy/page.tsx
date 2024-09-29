@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "GetColor.io - Cookies Policy",
+  description: "Cookies Policy for GetColor.io",
+};
+
 export default function CookiePolicyPage() {
   return (
     <>
@@ -44,7 +49,7 @@ export default function CookiePolicyPage() {
           details of your browsing history on that website among its many uses.
         </li>
         <li>
-          <strong>Website</strong> refers to GetColor.io, accessible from
+          <strong>Website</strong> refers to GetColor.io, accessible from{" "}
           <a
             href="https://getcolor.io"
             rel="external nofollow noopener"
@@ -116,7 +121,7 @@ export default function CookiePolicyPage() {
             traffic. Google uses the data collected to track and monitor the use
             of our Service. This data is shared with other Google services. For
             more information on the privacy practices of Google, please visit
-            the Google Privacy & Terms web page:
+            the Google Privacy & Terms web page:{" "}
             <a href="https://policies.google.com/privacy" target="_blank">
               https://policies.google.com/privacy
             </a>
@@ -125,7 +130,7 @@ export default function CookiePolicyPage() {
             <strong>PostHog Analytics:</strong> PostHog is an open-source
             analytics platform that helps us understand how users interact with
             our Website. For more information on the privacy practices of
-            PostHog, please visit the PostHog Privacy Policy web page:
+            PostHog, please visit the PostHog Privacy Policy web page:{" "}
             <a href="https://posthog.com/privacy" target="_blank">
               https://posthog.com/privacy
             </a>
@@ -160,50 +165,50 @@ export default function CookiePolicyPage() {
       <ul>
         <li>
           <p>
-            For the Chrome web browser, please visit this page from Google:
+            For the Chrome web browser, please visit this page from Google:{" "}
             <a
               href="https://support.google.com/accounts/answer/32050"
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://support.google.com/accounts/answer/32050
+              Google Chrome Instructions
             </a>
           </p>
         </li>
         <li>
           <p>
             For the Internet Explorer web browser, please visit this page from
-            Microsoft:
+            Microsoft:{" "}
             <a
               href="http://support.microsoft.com/kb/278835"
               rel="external nofollow noopener"
               target="_blank"
             >
-              http://support.microsoft.com/kb/278835
+              Internet Explorer Instructions
             </a>
           </p>
         </li>
         <li>
           <p>
-            For the Firefox web browser, please visit this page from Mozilla:
+            For the Firefox web browser, please visit this page from Mozilla:{" "}
             <a
               href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored
+              Firefox Instructions
             </a>
           </p>
         </li>
         <li>
           <p>
-            For the Safari web browser, please visit this page from Apple:
+            For the Safari web browser, please visit this page from Apple:{" "}
             <a
               href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac
+              Safari Instructions
             </a>
           </p>
         </li>
@@ -215,7 +220,7 @@ export default function CookiePolicyPage() {
 
       <h3>More Information about Cookies</h3>
       <p>
-        You can learn more about cookies here:
+        You can learn more about cookies here:{" "}
         <a href="https://www.termsfeed.com/blog/cookies/" target="_blank">
           All About Cookies by TermsFeed
         </a>
@@ -227,7 +232,9 @@ export default function CookiePolicyPage() {
         If you have any questions about this Cookies Policy, You can contact us:
       </p>
       <ul>
-        <li>By email: legal@getcolor.io</li>
+        <li>
+          By email: <a href="mailto:legal@getcolor.io">legal@getcolor.io</a>
+        </li>
       </ul>
     </>
   );

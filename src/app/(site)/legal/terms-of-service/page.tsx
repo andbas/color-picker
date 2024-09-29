@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "GetColor.io - Terms of Service",
+  description: "Terms of Service for GetColor.io",
+};
+
 export default function TermsAndConditionsPage() {
   return (
     <>
@@ -353,7 +358,9 @@ export default function TermsAndConditionsPage() {
         contact us:
       </p>
       <ul>
-        <li>By email: legal@getcolor.io</li>
+        <li>
+          By email: <a href="mailto:legal@getcolor.io">legal@getcolor.io</a>
+        </li>
       </ul>
     </>
   );

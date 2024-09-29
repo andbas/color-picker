@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Camera, Cookie } from "lucide-react";
 import { useConsent } from "@/hooks/use-consent";
+import Link from "next/link";
 
 export default function Consent() {
   const { consentDialogOpen, setConsent } = useConsent();
@@ -47,10 +48,9 @@ export default function Consent() {
               Your consent is needed for this. Even without accepting, the
               application will work fully for you — accepting helps us enhance
               the app for all users.{" "}
-              {/* TODO: Add a link to the cookies policy page */}
-              <a href="/privacy/cookies" className="underline">
+              <Link href="/legal/cookie-policy" className="underline">
                 Learn more
-              </a>
+              </Link>
               .
             </strong>
           </p>

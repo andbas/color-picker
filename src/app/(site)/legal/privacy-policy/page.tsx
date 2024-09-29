@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "GetColor.io - Privacy Policy",
+  description: "Privacy Policy for GetColor.io",
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <>
@@ -259,7 +264,9 @@ export default function PrivacyPolicyPage() {
         If you have any questions about this Privacy Policy, You can contact us:
       </p>
       <ul>
-        <li>By email: legal@getcolor.io</li>
+        <li>
+          By email: <a href="mailto:legal@getcolor.io">legal@getcolor.io</a>
+        </li>
       </ul>
     </>
   );

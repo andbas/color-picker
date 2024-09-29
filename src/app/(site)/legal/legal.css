@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .legal h1 {
   @apply text-2xl font-bold mb-4;
 }
@@ -13,7 +9,7 @@
 }
 
 .legal a {
-  @apply text-blue-600 hover:underline;
+  @apply underline;
 }
 
 .legal p {

@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "GetColor.io - Privacy and Legal",
+  description: "List of privacy and legal documents for GetColor.io",
+};
+
 export default function LegalPage() {
   return (
     <>
