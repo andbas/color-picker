@@ -7,6 +7,7 @@ interface ConsentContextType {
   consentDialogOpen: boolean;
   setConsentDialogOpen: (consentDialogOpen: boolean) => void;
   setConsent: (consent: Exclude<Consent, undefined>) => void;
+  allCookiesAccepted: boolean;
 }
 
 export type Consent =
@@ -40,6 +41,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
     consentDialogOpen,
     setConsentDialogOpen,
     setConsent: handleConsent,
+    allCookiesAccepted: consent === "all-cookies-accepted",
   };
 
   return (

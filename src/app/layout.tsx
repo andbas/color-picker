@@ -5,6 +5,7 @@ import { ConsentProvider } from "@/hooks/use-consent";
 import { SidebarMenuProvider } from "@/hooks/use-sidebar-menu";
 import { Metadata } from "next";
 import Consent from "@/components/consent";
+import Analytics from "@/components/analytics/analytics";
 
 export const metadata: Metadata = {
   title: "GetColor.io: Pick Colors from Your Surroundings (Free)",
@@ -33,6 +34,7 @@ export default function RootLayout({
 
               <SidebarMenu />
               <Consent />
+              <Analytics />
             </SidebarMenuProvider>
           </ConsentProvider>
         </ThemeProvider>
