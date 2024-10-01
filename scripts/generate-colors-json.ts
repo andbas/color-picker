@@ -146,7 +146,8 @@ async function processColors() {
 
   const results = [];
 
-  for (const color of ntcColors) {
+  for (let i = 0; i < ntcColors.length; i++) {
+    const color = ntcColors[i];
     const fileName = colorNameToFileName(color.name);
     results.push({
       name: color.name,
@@ -159,7 +160,11 @@ async function processColors() {
       continue;
     }
 
-    console.log(`Processing color ${color.name}`);
+    console.log(
+      `${String(i + 1).padStart(4, "0")} / ${
+        ntcColors.length
+      } Processing color ${color.name}`
+    );
     await generateColorDescription(color.name, color.hex);
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
