@@ -15,7 +15,7 @@ const openai = new OpenAI({
 });
 
 // Function to generate color description
-async function generateColorDescription(colorName) {
+async function generateColorDescription(colorName: string, colorHex: string) {
   const prompt =
     `You are an expert color analyst tasked with providing detailed information about a specific color ` +
     `from the NTC (Name That Color) palette. Your goal is to create a comprehensive, well-structured JSON ` +
@@ -36,7 +36,7 @@ async function generateColorDescription(colorName) {
         {
           type: "function",
           function: {
-            function: saveColorDescriptionFn(colorName),
+            function: saveColorDescriptionFn(colorName, colorHex),
             parse: JSON.parse,
             name: "saveColorDescription",
             description: "Save the color description to a JSON file",
@@ -110,13 +110,14 @@ async function generateColorDescription(colorName) {
 }
 
 // tool cals for save colors into JSON
-function saveColorDescriptionFn(colorName) {
+function saveColorDescriptionFn(colorName: string, colorHex: string) {
   return async (color) => {
     if (colorName !== color.name) {
       console.log(
         `Inconsistent color name: original - ${colorName} vs gpt result - ${color.name}`
       );
     }
+    color.hex = colorHex;
 
     const fileName = `${colorName.toLowerCase().replace(/ /g, "_")}.json`;
 
@@ -135,7 +136,7 @@ async function processColors() {
 
   for (const color of ntcColors) {
     console.log(`Processing color ${color.name}`);
-    await generateColorDescription(color.name);
+    await generateColorDescription(color.name, color.hex);
     results.push({
       name: color.name,
       hex: color.hex,
