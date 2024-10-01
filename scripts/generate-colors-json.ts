@@ -7,8 +7,6 @@ if (!process.env.OPENAI_API_KEY)
 
 const FOLDER_PATH = "public/colors";
 
-const colorFilenameMap = new Map<string, string>();
-
 // Initialize OpenAI API
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -124,29 +122,46 @@ function saveColorDescriptionFn(colorName: string, colorHex: string) {
     }
     color.hex = colorHex;
 
-    const fileName = `${colorName.toLowerCase().replace(/ /g, "_")}.json`;
+    const fileName = `${colorNameToFileName(colorName)}`;
 
     fs.writeFileSync(
       `${FOLDER_PATH}/${fileName}`,
       JSON.stringify(color, null, 2)
     );
-
-    colorFilenameMap.set(colorName, fileName);
   };
+}
+
+function colorNameToFileName(colorName: string) {
+  return `${colorName.toLowerCase().replace("/", "").replace(/ /g, "_")}.json`;
+}
+
+function getProcessedColors(): Set<string> {
+  const files = fs.readdirSync(FOLDER_PATH);
+  return new Set(files);
 }
 
 // Main function to process all colors
 async function processColors() {
+  const processedColors = getProcessedColors();
+
   const results = [];
 
   for (const color of ntcColors) {
-    console.log(`Processing color ${color.name}`);
-    await generateColorDescription(color.name, color.hex);
+    const fileName = colorNameToFileName(color.name);
     results.push({
       name: color.name,
       hex: color.hex,
-      json: colorFilenameMap.get(color.name),
+      json: fileName,
     });
+
+    if (processedColors.has(fileName)) {
+      console.log(`Skipping ${color.name} as it is already processed`);
+      continue;
+    }
+
+    console.log(`Processing color ${color.name}`);
+    await generateColorDescription(color.name, color.hex);
+
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
