@@ -32,6 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
+      SITE_URL: ${{ vars.SITE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
