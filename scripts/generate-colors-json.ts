@@ -100,6 +100,11 @@ async function generateColorDescription(colorName: string, colorHex: string) {
           },
         },
       ],
+      // This stop communication with the model after calling the function
+      tool_choice: {
+        type: "function",
+        function: { name: "saveColorDescription" },
+      },
     });
 
     await runner.finalContent();
