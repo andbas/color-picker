@@ -31,4 +31,8 @@ const pixelToX = (pixel: Pixel, mode?: "hex" | "rgb" | "name") => {
   return pixelToHex(pixel);
 };
 
-export { isLight, closest, pixelToHex, pixelToX };
+const colorToUrlSlug = (colorName: string) => {
+  return colorName.toLowerCase().replace("/", "").replace(/ /g, "_");
+};
+
+export { isLight, closest, pixelToHex, pixelToX, colorToUrlSlug };

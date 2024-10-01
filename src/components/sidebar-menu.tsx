@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Aperture, Cookie, Github, Home, Scale } from "lucide-react";
+import { Aperture, Cookie, Github, Home, Palette, Scale } from "lucide-react";
 
 import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
 import { useConsent } from "@/hooks/use-consent";
@@ -63,6 +63,21 @@ export default function SidebarMenu() {
             >
               <Aperture className="h-4 w-4" />
               GetColor
+            </Link>
+            <Link
+              href="/colors"
+              className={`flex items-center gap-3 rounded-lg px-3 py-3 transition-all hover:text-primary ${
+                pathname === "/colors"
+                  ? "bg-muted text-primary"
+                  : "text-muted-foreground"
+              }`}
+              onClick={() => {
+                setSidebarOpen(false);
+                router.push("/colors");
+              }}
+            >
+              <Palette className="h-4 w-4" />
+              Colors
             </Link>
           </nav>
         </div>
