@@ -1,0 +1,15 @@
+{
+  "name": "Indigo",
+  "description": "Indigo is a deep and rich color, traditionally made from the indigo dye derived from the plant Indigofera. It sits between blue and violet on the color wheel, often evoking a sense of depth and mystery. This color has been prized for centuries, particularly in textiles for its vibrant hue which can seem both calming and exciting depending on the context. The complexity of indigo's tone gives it a unique versatility, making it suitable for a wide range of applications.",
+  "originOfName": "The word 'indigo' comes from the Latin 'indicum', meaning 'from India', as the dye was historically imported from India to Europe. The significance of indigo has also been reflected in the indigo trade, which played a crucial role in the economies of various countries, particularly during the colonial era. Various cultures have associated indigo with spiritual practices, and it has been used in different forms of art and clothing across continents.",
+  "usageInDesign": {
+    "interiorDesign": "Indigo adds a touch of elegance and sophistication when used in home decor. It works particularly well in living rooms and bedrooms, often paired with natural materials like wood or metals to balance its intensity. Design styles that complement indigo include Bohemian and Contemporary, where rich textiles in indigo can add visual warmth and depth to spaces.",
+    "fashion": "In fashion, indigo is frequently found in denim, as well as in garments that aim for a relaxed yet stylish look. It tends to dominate the cooler months but can be adapted for spring collections by pairing with lighter fabrics. Indigo blue dresses, blazers, and accessories are popular choices for creating a polished yet approachable aesthetic.",
+    "graphicDesign": "Indigo is often utilized in graphic design for its strong visual impact, reflecting both tradition and modernity. It is effective in branding and logo creation, where it conveys trust and reliability. Additionally, indigo's depth and complexity make it suitable for web design, as it provides a strong background that can highlight lighter text or imagery."
+  },
+  "visualCharacteristics": {
+    "mood": "Indigo evokes feelings of introspection and contemplation, often associated with calmness and tranquility yet also creativity and imagination. It can create a serene environment while also inspiring thought, making it a popular choice in spaces meant for relaxation or creativity.",
+    "complementaryColors": "Indigo pairs well with colors such as gold, which adds warmth and a touch of luxury, and soft neutrals like white and gray, which can provide balance. Additionally, it complements shades of coral and peach, creating an appealing contrast that is visually stimulating."
+  },
+  "hex": "4F69C6"
+}

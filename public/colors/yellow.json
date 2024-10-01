@@ -1,0 +1,15 @@
+{
+  "name": "Yellow",
+  "description": "Yellow is a bright and cheerful color that is often associated with sunlight, happiness, and optimism. It can evoke feelings of warmth and energy, reminiscent of a sunny day. As one of the primary colors, yellow holds a significant position in the color wheel and is often used to draw attention due to its high visibility. In design, yellow can be stimulating and uplifting, making it a popular choice for creating lively and vibrant spaces.",
+  "originOfName": "The word 'yellow' originates from the Old English 'geolu,' which is derived from Proto-Germanic *gelwaz. Historically, yellow pigments have been used since ancient times, including ochre and saffron, often symbolizing wealth and prosperity, especially in cultures that prized gold and its golden hue. In many cultures, yellow has also been associated with joy and celebration, making it a prominent color in festivals and cultural attire.",
+  "usageInDesign": {
+    "interiorDesign": "In interior design, yellow is often used to make spaces feel larger and more inviting. It works particularly well in kitchens and dining areas, where it enhances appetite and conversation. Yellow can be incorporated through paint, accent walls, or decor items like cushions and ceramics. Pairing yellow with neutral tones can create a balanced environment, allowing the brightness to shine without overwhelming the space.",
+    "fashion": "Yellow is a prominent color in fashion, often symbolizing cheerfulness and creativity. It is popular during spring and summer collections, often seen in dresses, accessories, and activewear. Bright yellow garments can make a bold statement, while softer, pastel yellows are frequently used for a more subtle elegance. Designers often combine yellow with white or denim for a fresh, seasonal look that balances vibrancy with classic styles.",
+    "graphicDesign": "In graphic design, yellow is highly effective in capturing attention and conveying positivity. It is commonly used in logos, advertising, and call-to-action buttons due to its high visibility. However, excessive use of yellow can lead to visual fatigue, so it’s best utilized in moderation. Complementary colors like purple or blue can enhance yellow's impact by providing contrast, making it stand out even more."
+  },
+  "visualCharacteristics": {
+    "mood": "Yellow is commonly associated with feelings of happiness, warmth, and energy. It can stimulate mental activity and enhance communication, making it an ideal choice for spaces that require creativity and interaction. However, excessive exposure to yellow, especially in bright shades, can lead to feelings of anxiety, so moderation is key.",
+    "complementaryColors": "Complementary colors to yellow typically include purple, blue, and dark gray. Purple adds a royal and luxurious feel that balances yellow's brightness, while blue promotes calmness and stability, creating a harmonious blend. Dark gray can provide a sophisticated contrast that allows yellow to shine without overwhelming the viewer."
+  },
+  "hex": "FFFF00"
+}

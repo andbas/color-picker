@@ -1,0 +1,15 @@
+{
+  "name": "Azure",
+  "description": "Azure is a bright, vivid blue that resembles the clear sky on a sunny day. This color is often associated with feelings of tranquility and serenity, making it a favorite among designers who aim to evoke a peaceful atmosphere. Its brightness also lends a fresh and vibrant quality, making it a popular choice in various design contexts.",
+  "originOfName": "The name 'azure' derives from the Latin word 'caeruleus,' which means 'dark blue' or 'blue.' The term was influenced by the word 'azur,' from Arabic 'lazaward,' which referred to lapis lazuli, a precious stone famed for its intense blue shade. Azure has long been used in art and literature, symbolizing inspiration, spirituality, and the divine.",
+  "usageInDesign": {
+    "interiorDesign": "In interior design, azure is often utilized to create open and airy spaces. It pairs exceptionally well with neutral tones such as whites and grays, which enhance its brightness. Designers frequently incorporate azure in coastal-themed decor as it embodies the essence of the ocean and sky—think living rooms with ocean views or serene bedrooms.",
+    "fashion": "In fashion, azure is a key color in spring and summer collections, often seen in light fabrics, swimwear, and accessories. It conveys a sense of freshness and vitality, making it a favorite for casual wear and resort-style clothing. Designers may pair azure with vibrant colors like coral or sunny yellow to create eye-catching ensembles that draw attention without overwhelming the viewer.",
+    "graphicDesign": "In graphic design, azure is effectively used to convey trust, dependability, and professionalism. Brands in the tech and health sectors often employ azure hues in their logos and branding materials, associating the color with clarity and integrity. Additionally, azure can be used as a background in print media or websites to ensure text stands out clearly while providing a calming visual experience."
+  },
+  "visualCharacteristics": {
+    "mood": "Azure evokes feelings of calmness and peace, reminiscent of clear skies and serene waters. It's a color that inspires creativity and clarity, often viewed as uplifting and energizing in a subtle way. Many people associate azure with tranquility, making it ideal for spaces meant for relaxation or focus.",
+    "complementaryColors": "Common complementary colors to azure include warm shades such as coral, peach, and various shades of orange and yellow. These warm colors create a striking contrast, balancing the coolness of azure and enhancing its vibrancy. When used in design, these complementary colors can create dynamic and engaging visuals that draw the eye."
+  },
+  "hex": "315BA1"
+}

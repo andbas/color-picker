@@ -1,0 +1,15 @@
+{
+  "name": "Leather",
+  "description": "Leather is a rich and warm brown shade reminiscent of tanned leather goods. It combines earthiness with sophistication, often evoking feelings of stability and comfort. This color is commonly associated with luxury items, such as high-end handbags, shoes, and furniture, that exemplify craftsmanship and durability. Its depth can range from lighter taupes to deep chocolate tones, making it versatile for various design applications.",
+  "originOfName": "The term 'leather' refers to the tanned skin of animals, particularly cows, historically used for clothing and shelter. The color draws inspiration from this material, celebrating its industrial and artisanal qualities. Leather has been a fundamental part of human culture, dating back tens of thousands of years, and its ongoing use in fashion and design speaks to a timeless appeal.",
+  "usageInDesign": {
+    "interiorDesign": "In interior design, Leather is often employed to create cozy, inviting spaces. It works beautifully in rustic environments, where it can pair with wooden elements for a harmonious look. Leather furniture, such as sofas and chairs, adds a touch of elegance, especially in traditional and modern designs. Common applications include accent chairs, ottomans, and wall panels that bring warmth and class to living areas.",
+    "fashion": "In fashion, Leather is a staple for both its durability and aesthetic appeal. Leather jackets, bags, and footwear remain timeless classics, frequently featured in autumn and winter collections due to their ability to provide warmth and style. Designers often use leather in edgy, urban fashion, associating it with rebellion and individuality. Seasonal trends vary, with softer, more supple leathers making their way into spring and summer collections for a fresh take on this enduring material.",
+    "graphicDesign": "In graphic design, Leather can symbolize sophistication and luxury, making it an effective choice for high-end brand identities and packaging. It is often used in typography and textures to convey quality and craftsmanship, particularly in the luxury goods sector. When applied in web design, Leather tones can foster a comforting atmosphere, ensuring that the user feels connected to the brand. However, the challenge lies in balancing its richness without overwhelming other elements in a design."
+  },
+  "visualCharacteristics": {
+    "mood": "Leather tends to evoke feelings of warmth, comfort, and security, creating a sense of grounding. It can also show sophistication and elegance, especially when paired with metallic accents or lighter colors. The emotional impact of this color often ranges from relaxed to assertive, making it suitable for various environments and design intents.",
+    "complementaryColors": "Complementary colors for Leather include softer hues like sage green, creamy whites, and muted golds, which lighten the depth of Leather and create a balanced aesthetic. These colors work harmoniously to accentuate the richness of Leather, fostering a warm, inviting atmosphere in both interior and fashion contexts."
+  },
+  "hex": "967059"
+}

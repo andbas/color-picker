@@ -1,0 +1,15 @@
+{
+  "name": "Dark Blue",
+  "description": "Dark Blue is a rich, deep hue associated with depth, stability, and professionalism. This color evokes feelings of trust and reliability, making it a preferred choice in corporate branding and design contexts. Its profound presence is often reminiscent of the vast ocean depths or the night sky, symbolizing the mystery and infinity beyond. Dark Blue can also convey a sense of calm and serenity, making it a solid option in spaces meant for relaxation and focus.",
+  "originOfName": "The term 'blue' is derived from the Old French word 'bleu,' which itself originates from the Proto-Germanic word 'blaewaz,' meaning 'dark' or 'to be pale.' Historically, blue pigments were rare and highly prized; during the Renaissance, ultramarine, made from lapis lazuli, was considered more valuable than gold. Dark shades of blue have been used in art dating back to ancient Egypt, symbolizing the heavens and the divine.",
+  "usageInDesign": {
+    "interiorDesign": "In interior design, Dark Blue is often employed to create a sophisticated and tranquil atmosphere. It works exceptionally well in bedrooms and offices, providing a calming backdrop that enhances focus and relaxation. Combining Dark Blue with lighter shades, such as whites or soft greys, can create a harmonious balance, while using it as an accent color can add a dramatic flair to living spaces, particularly in nautical or coastal-themed designs.",
+    "fashion": "In the realm of fashion, Dark Blue is a timeless color that signifies elegance and authority. It is commonly seen in formal and professional attire, such as suits and dresses, and is favored for its versatility across various seasons. Designers often use Dark Blue in evening wear, as it is flattering for many skin tones and can be paired effortlessly with metallics and other jewel tones, offering an air of sophistication.",
+    "graphicDesign": "In graphic design, Dark Blue serves as a powerful tool for establishing brand identity and trustworthiness. It is frequently used in corporate logos, websites, and marketing materials, as it evokes a sense of professionalism and reliability. When used against lighter backgrounds, Dark Blue can effectively communicate information without overwhelming the viewer, making it ideal for websites and educational materials."
+  },
+  "visualCharacteristics": {
+    "mood": "Dark Blue tends to evoke feelings of calmness, confidence, and stability. It can induce a sense of professionalism and seriousness, making it a popular choice in corporate branding. However, it can also encourage introspection and contemplation, providing a restful space for thought.",
+    "complementaryColors": "Dark Blue pairs well with a variety of colors, including soft neutrals like beige and taupe, which help to lighten its depth. Other effective complementary colors include warm tones like orange and gold, which create a striking contrast and draw attention to Dark Blue's richness. These combinations can be particularly effective in design schemes aiming for both vibrancy and sophistication."
+  },
+  "hex": "0000C8"
+}
