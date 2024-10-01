@@ -1,0 +1,15 @@
+{
+  "name": "Venetian Red",
+  "description": "Venetian Red is a rich and warm shade of red, reminiscent of the vibrant hues seen in Venetian art and architecture. This color embodies the essence of passion and creativity, often associated with romantic and historical contexts. With its deep, earthy tones, it can evoke feelings of warmth and comfort, making it a popular choice in various design applications.",
+  "originOfName": "The name 'Venetian Red' is derived from Venice, Italy, a city renowned for its artistic heritage and distinctive red hues found in its buildings and artworks. The color has been used by painters since the Renaissance, particularly in the works of renowned artists like Titian and Tintoretto, who captured its beauty in their masterpieces. This historical significance contributes to the color's richness and depth.",
+  "usageInDesign": {
+    "interiorDesign": "In interior design, Venetian Red brings a sense of warmth and sophistication, often used in living rooms, dining areas, or as an accent wall. Its deep hue pairs beautifully with neutral tones like cream and beige, enhancing the overall aesthetic. This color can also be found in traditional and classical designs, where it adds a touch of elegance and history.",
+    "fashion": "In fashion, Venetian Red exudes confidence and luxury. It is frequently used in evening wear and formal attire, capturing attention with its bold presence. Seasonal trends often see this color in autumn collections, where it complements the earthy palette of fall fabrics like wool and velvet.",
+    "graphicDesign": "In graphic design, Venetian Red is effective for branding, logos, and marketing materials where a sense of power and sophistication is required. It is often employed in high-end products, lending an air of exclusivity and quality. This color pairs well with metallics and whites, creating striking visual contrasts that draw the viewer's eye."
+  },
+  "visualCharacteristics": {
+    "mood": "The warm tones of Venetian Red evoke feelings of strength and vitality, inspiring passion and creativity. It can energize a space or an outfit, making it ideal for stimulating environments. However, excessive use can also overwhelm, so it is often balanced with cooler colors.",
+    "complementaryColors": "Complementary colors to Venetian Red include soft greens and muted blues, which can calm the intensity of the red. Colors such as olive green or teal work harmoniously to create a balanced aesthetic, allowing the richness of Venetian Red to stand out while maintaining visual interest."
+  },
+  "hex": "72010F"
+}
