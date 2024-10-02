@@ -1,4 +1,10 @@
 import ColorsList from "./colors-list";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+} from "@/components/ui/breadcrumb";
 
 export const metadata = {
   title: "GetColor.io | Colors Palette",
@@ -8,6 +14,13 @@ export const metadata = {
 export default function ColorsPage() {
   return (
     <>
+      <Breadcrumb className="mb-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <h1 className="text-4xl font-bold">Colors Palette</h1>
 
       <ColorsList />
