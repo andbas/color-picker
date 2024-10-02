@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "GetColor.io - Privacy Policy",
+  title: "GetColor.io | Privacy Policy",
   description: "Privacy Policy for GetColor.io",
 };
 

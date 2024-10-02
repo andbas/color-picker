@@ -3,14 +3,21 @@ import "../index.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ConsentProvider } from "@/hooks/use-consent";
 import { SidebarMenuProvider } from "@/hooks/use-sidebar-menu";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import Consent from "@/components/consent";
 import Analytics from "@/components/analytics/analytics";
 
 export const metadata: Metadata = {
-  title: "GetColor.io: Pick Colors from Your Surroundings (Free)",
+  title: "GetColor.io: Pick Colors from Your Surroundings (Free, No Ads)",
   description:
     "Allows you to pick colors from your surroundings using your camera",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

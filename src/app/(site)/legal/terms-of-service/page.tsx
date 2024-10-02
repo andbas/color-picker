@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "GetColor.io - Terms of Service",
+  title: "GetColor.io | Terms of Service",
   description: "Terms of Service for GetColor.io",
 };
 

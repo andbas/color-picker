@@ -1,7 +1,7 @@
 import ColorsList from "./colors-list";
 
 export const metadata = {
-  title: "GetColor.io: Colors Palette",
+  title: "GetColor.io | Colors Palette",
   description: "All the collor names used in GetColor.io Camera Color Picker",
 };
 
