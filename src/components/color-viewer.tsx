@@ -77,7 +77,7 @@ export function ColorViewer({
         }`}
         className="absolute right-0 top-0 w-1/6 h-full cursor-pointer flex items-center justify-center"
       >
-        <Info className="w-6 h-6" />
+        <Info className="w-6 h-6" strokeWidth={1.5} />
       </Link>
     </div>
   );
