@@ -1,5 +1,11 @@
 import { Pixel } from "@/types";
-import { isLight, pixelToHex, pixelToUrlSlug, pixelToX } from "@/utils";
+import {
+  colorToUrlSlug,
+  isLight,
+  pixelToHex,
+  pixelToUrlSlug,
+  pixelToX,
+} from "@/utils";
 import { useDebounce } from "@uidotdev/usehooks";
 import { ClipboardCopy, Info, Sparkle } from "lucide-react";
 import Link from "next/link";
@@ -66,7 +72,9 @@ export function ColorViewer({
       ></div>
 
       <Link
-        href={`/colors/${pixelToUrlSlug(pixel)}`}
+        href={`/colors/${
+          mode === "name" ? colorToUrlSlug(value) : pixelToUrlSlug(pixel)
+        }`}
         className="absolute right-0 top-0 w-1/6 h-full cursor-pointer flex items-center justify-center"
       >
         <Info className="w-6 h-6" />
