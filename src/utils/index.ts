@@ -35,4 +35,15 @@ const colorToUrlSlug = (colorName: string) => {
   return colorName.toLowerCase().replace("/", "").replace(/ /g, "_");
 };
 
-export { isLight, closest, pixelToHex, pixelToX, colorToUrlSlug };
+const pixelToUrlSlug = (pixel: Pixel) => {
+  return `${colorToUrlSlug(pixelToX(pixel, "name"))}`;
+};
+
+export {
+  isLight,
+  closest,
+  pixelToHex,
+  pixelToX,
+  colorToUrlSlug,
+  pixelToUrlSlug,
+};

@@ -1,7 +1,8 @@
 import { Pixel } from "@/types";
-import { isLight, pixelToHex, pixelToX } from "@/utils";
+import { isLight, pixelToHex, pixelToUrlSlug, pixelToX } from "@/utils";
 import { useDebounce } from "@uidotdev/usehooks";
-import { ClipboardCopy, Sparkle } from "lucide-react";
+import { ClipboardCopy, Info, Sparkle } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 interface ColorViewerProps {
@@ -33,8 +34,7 @@ export function ColorViewer({
 
   return (
     <div
-      onClick={handleClick}
-      className={`flex w-full justify-center items-center h-12 transition-colors duration-200 ${
+      className={`flex w-full justify-center items-center h-12 transition-colors duration-200 relative ${
         isLight(pixelColor) ? "text-black" : "text-white"
       }`}
       style={{
@@ -60,6 +60,17 @@ export function ColorViewer({
           {value}
         </span>
       </div>
+      <div
+        onClick={handleClick}
+        className="absolute left-0 top-0 w-5/6 h-full cursor-pointer"
+      ></div>
+
+      <Link
+        href={`/colors/${pixelToUrlSlug(pixel)}`}
+        className="absolute right-0 top-0 w-1/6 h-full cursor-pointer flex items-center justify-center"
+      >
+        <Info className="w-6 h-6" />
+      </Link>
     </div>
   );
 }
