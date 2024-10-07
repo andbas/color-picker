@@ -19,6 +19,7 @@ import { VideoSampler } from "./video-sampler";
 import { Frame } from "./frame";
 import { ColorViewer } from "./color-viewer";
 import { useSidebarMenu } from "@/hooks/use-sidebar-menu";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface VideoFeedProps {}
 
@@ -34,7 +35,10 @@ function VideoFeed({}: VideoFeedProps) {
   const [pixelMatrix, setPixelMatrix] = useState<PixelMatrixType>([]);
   const [isPaused, setIsPaused] = useState(false);
   const [pixelColor, setPixelColor] = useState<string>("rgb(0, 0, 0)");
-  const [namingMode, setNamingMode] = useState<"hex" | "rgb" | "name">("name");
+  const [namingMode, setNamingMode] = useLocalStorage<"hex" | "rgb" | "name">(
+    "naming-mode",
+    "name"
+  );
   const { setSidebarOpen } = useSidebarMenu();
 
   const togglePlay = () => {

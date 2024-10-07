@@ -1,3 +1,5 @@
+"use client";
+
 import { Pixel } from "@/types";
 import {
   colorToUrlSlug,
